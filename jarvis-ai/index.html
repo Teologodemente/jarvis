@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A.R.V.I.S. - Just A Rather Very Intelligent System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Boot Screen -->
+    <div id="boot-screen">
+        <div class="boot-content">
+            <div class="arc-reactor">
+                <div class="reactor-ring ring-1"></div>
+                <div class="reactor-ring ring-2"></div>
+                <div class="reactor-ring ring-3"></div>
+                <div class="reactor-core"></div>
+            </div>
+            <h1 class="boot-title">J.A.R.V.I.S.</h1>
+            <p class="boot-subtitle">Just A Rather Very Intelligent System</p>
+            <div class="boot-progress">
+                <div class="boot-progress-bar" id="bootProgress"></div>
+            </div>
+            <div class="boot-status" id="bootStatus">Inicializando núcleo cuántico...</div>
+        </div>
+    </div>
+
+    <!-- Main Interface -->
+    <div id="main-interface" class="hidden">
+        <!-- Background Effects -->
+        <div class="bg-grid"></div>
+        <div class="particles" id="particles"></div>
+        
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-left">
+                <div class="status-indicator online"></div>
+                <span class="status-text">SISTEMA ONLINE</span>
+            </div>
+            <div class="top-center">
+                <span class="jarvis-label">J.A.R.V.I.S.</span>
+            </div>
+            <div class="top-right">
+                <span class="datetime" id="datetime"></span>
+                <span class="uptime" id="uptime">UPTIME: 00:00:00</span>
+            </div>
+        </header>
+
+        <!-- Main HUD Layout -->
+        <div class="hud-container">
+            <!-- Left Panel -->
+            <aside class="panel left-panel">
+                <div class="panel-header">
+                    <span class="panel-icon">◆</span>
+                    <span>ANÁLISIS EN TIEMPO REAL</span>
+                </div>
+                <div class="system-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">CPU CUÁNTICA</div>
+                        <div class="stat-bar"><div class="stat-fill" id="cpuBar" style="width: 23%"></div></div>
+                        <div class="stat-value" id="cpuValue">23%</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">MEMORIA NEURAL</div>
+                        <div class="stat-bar"><div class="stat-fill" id="memBar" style="width: 67%"></div></div>
+                        <div class="stat-value" id="memValue">67%</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">REDES GLOBALES</div>
+                        <div class="stat-bar"><div class="stat-fill network" id="netBar" style="width: 89%"></div></div>
+                        <div class="stat-value" id="netValue">89%</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">BASE DE CONOCIMIENTO</div>
+                        <div class="stat-bar"><div class="stat-fill knowledge" id="knowBar" style="width: 94%"></div></div>
+                        <div class="stat-value" id="knowValue">94%</div>
+                    </div>
+                </div>
+                
+                <div class="panel-header" style="margin-top: 15px;">
+                    <span class="panel-icon">◆</span>
+                    <span>HABILIDADES ACTIVAS</span>
+                </div>
+                <div class="abilities-list">
+                    <div class="ability-item active">
+                        <span class="ability-dot"></span>
+                        <span>Procesamiento de Lenguaje</span>
+                    </div>
+                    <div class="ability-item active">
+                        <span class="ability-dot"></span>
+                        <span>Análisis Matemático</span>
+                    </div>
+                    <div class="ability-item active">
+                        <span class="ability-dot"></span>
+                        <span>Generación de Código</span>
+                    </div>
+                    <div class="ability-item active">
+                        <span class="ability-dot"></span>
+                        <span>Visión Computacional</span>
+                    </div>
+                    <div class="ability-item active">
+                        <span class="ability-dot"></span>
+                        <span>Aprendizaje Autónomo</span>
+                    </div>
+                    <div class="ability-item active">
+                        <span class="ability-dot"></span>
+                        <span>Simulación Cuántica</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Panel -->
+            <main class="center-panel">
+                <!-- Arc Reactor Display -->
+                <div class="reactor-display">
+                    <svg class="reactor-svg" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="90" class="reactor-outer-ring" />
+                        <circle cx="100" cy="100" r="70" class="reactor-mid-ring" />
+                        <circle cx="100" cy="100" r="50" class="reactor-inner-ring" />
+                        <circle cx="100" cy="100" r="20" class="reactor-glow" />
+                        <!-- Rotating segments -->
+                        <g class="rotating-segments">
+                            <path d="M100 10 L105 25 L95 25 Z" class="segment" />
+                            <path d="M190 100 L175 105 L175 95 Z" class="segment" />
+                            <path d="M100 190 L95 175 L105 175 Z" class="segment" />
+                            <path d="M10 100 L25 95 L25 105 Z" class="segment" />
+                        </g>
+                        <g class="rotating-segments-reverse">
+                            <circle cx="100" cy="100" r="80" class="dashed-ring" />
+                        </g>
+                    </svg>
+                    <div class="reactor-status" id="reactorStatus">NÚCLEO ACTIVO</div>
+                </div>
+
+                <!-- Chat Area -->
+                <div class="chat-container" id="chatContainer">
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- Messages will be added here -->
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <div class="input-glow"></div>
+                        <input type="text" id="userInput" placeholder="Háblame, Sir..." autocomplete="off" />
+                        <button id="sendBtn" class="send-button">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                        <button id="voiceBtn" class="voice-button" title="Hablar">
+                            <svg viewBox="0 0 24 24" width="18" height="18">
+                                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" fill="currentColor"/>
+                                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-btn" data-action="code">💻 Generar Código</button>
+                        <button class="quick-btn" data-action="math">🔢 Calcular</button>
+                        <button class="quick-btn" data-action="explain">📚 Explicar</button>
+                        <button class="quick-btn" data-action="creative">🎨 Creativo</button>
+                        <button class="quick-btn" data-action="hack">🛡️ Análisis</button>
+                        <button class="quick-btn" data-action="weather">🌤️ Clima</button>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Panel -->
+            <aside class="panel right-panel">
+                <div class="panel-header">
+                    <span class="panel-icon">◆</span>
+                    <span>CONOCIMIENTO GLOBAL</span>
+                </div>
+                <div class="knowledge-graph" id="knowledgeGraph">
+                    <canvas id="graphCanvas" width="280" height="200"></canvas>
+                </div>
+                
+                <div class="panel-header" style="margin-top: 15px;">
+                    <span class="panel-icon">◆</span>
+                    <span>ACTIVIDAD RECIENTE</span>
+                </div>
+                <div class="activity-log" id="activityLog">
+                    <div class="log-entry">
+                        <span class="log-time">00:00</span>
+                        <span class="log-msg">Sistema inicializado</span>
+                    </div>
+                </div>
+
+                <div class="panel-header" style="margin-top: 15px;">
+                    <span class="panel-icon">◆</span>
+                    <span>MÉTRICAS</span>
+                </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="totalQueries">0</div>
+                        <div class="metric-label">Consultas</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="responseTime">0ms</div>
+                        <div class="metric-label">Tiempo Resp.</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="knowledgeBase">∞</div>
+                        <div class="metric-label">Base Conocim.</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Bottom Bar -->
+        <footer class="bottom-bar">
+            <div class="bottom-left">
+                <span class="protocol">PROTOCOLO: STARK INDUSTRIES v3.7.1</span>
+            </div>
+            <div class="bottom-center">
+                <div class="waveform" id="waveform"></div>
+            </div>
+            <div class="bottom-right">
+                <span class="encryption">CIFRADO: AES-256 | CANAL: SEGURO</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="jarvis.js"></script>
+</body>
+</html>
